@@ -1,0 +1,28 @@
+node_modules/
+.next/
+dist/
+*.db
+*.db-*
+
+# Secrets — .env.example stays tracked, everything else env-shaped does not
+.env
+.env.local
+.env.*
+!.env.example
+
+# Claude Code: its project instructions and local config are not part of the deployed codebase
+.claude/
+CLAUDE.md
+
+# Design notes and review scratch — working material, not part of the deployed codebase
+temp-docs/
+
+# Generated / local-only
+*.log
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.scratch*
+
+# Runtime state the app writes while running (cleared by /demo/reset) — not source
+apps/agent/data/disagreement-tickets.json

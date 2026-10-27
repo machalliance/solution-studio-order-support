@@ -1,0 +1,143 @@
+{
+  "hits": [
+    {
+      "objectID": "jacket-001",
+      "name": "Packable Rain Shell",
+      "brand": "Waybound",
+      "price": 145,
+      "currency": "USD",
+      "category": "jacket",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "waterproof",
+        "packable",
+        "lightweight",
+        "outdoor",
+        "road-trip",
+        "weather-resistant"
+      ],
+      "colourHex": "#556B4D",
+      "colourFamily": "moss",
+      "images": [
+        "/images/jacket-001.jpg"
+      ],
+      "url": "/products/packable-rain-shell",
+      "inStock": true,
+      "description": "The Waybound Packable Rain Shell in moss is a lightweight, waterproof layer that packs down into its own pocket for easy road-trip storage. Weather-resistant and designed for outdoor adventures, it delivers reliable protection without the bulk.",
+      "imagePrompt": "Compact packable rain shell in moss green nylon, fold-flat silhouette, waterproof texture, adventure-ready outdoor gear."
+    },
+    {
+      "objectID": "jacket-002",
+      "name": "Canvas Chore Jacket",
+      "brand": "Waybound",
+      "price": 165,
+      "currency": "USD",
+      "category": "jacket",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "canvas",
+        "durable",
+        "workwear-inspired",
+        "casual",
+        "layering",
+        "trailhead"
+      ],
+      "colourHex": "#8B7355",
+      "colourFamily": "rust",
+      "images": [
+        "/images/jacket-002.jpg"
+      ],
+      "url": "/products/canvas-chore-jacket",
+      "inStock": true,
+      "description": "This rust canvas chore jacket combines durable workwear styling with everyday versatility for layering or wearing solo. Built from sturdy canvas with a relaxed fit, it's equally at home at the trailhead or running errands around town.",
+      "imagePrompt": "Rugged workwear jacket in rust canvas with utility pockets and weathered finish, displayed on outdoor trailhead setting."
+    },
+    {
+      "objectID": "jacket-003",
+      "name": "Fleece-Lined Canvas Overshirt",
+      "brand": "Waybound",
+      "price": 155,
+      "currency": "USD",
+      "category": "jacket",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "canvas",
+        "fleece-lined",
+        "casual",
+        "layering",
+        "weather-ready",
+        "unfussy"
+      ],
+      "colourHex": "#36454F",
+      "colourFamily": "charcoal",
+      "images": [
+        "/images/jacket-003.jpg"
+      ],
+      "url": "/products/fleece-lined-canvas-overshirt",
+      "inStock": true,
+      "description": "This charcoal canvas overshirt features a warm fleece lining for cozy layering through cooler months. Perfect for throwing over your everyday basics, it delivers rugged style with minimal fuss.",
+      "imagePrompt": "Relaxed-fit fleece-lined canvas overshirt in charcoal, layered over casual basics, rugged and weather-ready aesthetic."
+    },
+    {
+      "objectID": "jacket-004",
+      "name": "Packable Waterproof Rain Shell",
+      "brand": "Waybound",
+      "price": 145,
+      "currency": "USD",
+      "category": "jacket",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "waterproof",
+        "packable",
+        "lightweight",
+        "outdoor",
+        "road-trip"
+      ],
+      "colourHex": "#5a6b4f",
+      "colourFamily": "moss",
+      "images": [
+        "/images/jacket-004.jpg"
+      ],
+      "url": "/products/packable-waterproof-rain-shell",
+      "inStock": true,
+      "description": "The moss Packable Waterproof Rain Shell from Waybound is designed to keep you dry on any adventure while packing down small enough to fit in your backpack. Perfect for road trips and outdoor excursions, this lightweight women's shell combines waterproof protection with convenient portability.",
+      "imagePrompt": "Slim women's rain shell in moss green, waterproof ripstop fabric, compact packed-down size shown, outdoor adventure ready."
+    },
+    {
+      "objectID": "jacket-005",
+      "name": "Canvas Chore Jacket",
+      "brand": "Waybound",
+      "price": 125,
+      "currency": "USD",
+      "category": "jacket",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "canvas",
+        "durable",
+        "relaxed",
+        "workwear",
+        "layering"
+      ],
+      "colourHex": "#6b7280",
+      "colourFamily": "charcoal",
+      "images": [
+        "/images/jacket-005.jpg"
+      ],
+      "url": "/products/canvas-chore-jacket",
+      "inStock": true,
+      "description": "This charcoal canvas chore jacket from Waybound features durable construction and a relaxed fit, making it perfect for workwear and layering. Built to withstand daily wear, it's a versatile essential that transitions seamlessly from job site to casual outings.",
+      "imagePrompt": "Relaxed women's chore jacket in charcoal canvas, durable workwear with functional pockets and structured shoulders."
+    }
+  ],
+  "nbHits": 5,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

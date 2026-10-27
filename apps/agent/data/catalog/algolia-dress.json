@@ -1,0 +1,41 @@
+{
+  "hits": [
+    {
+      "objectID": "dress-001",
+      "name": "Chambray Shirtdress",
+      "brand": "Waybound",
+      "price": 110,
+      "currency": "USD",
+      "category": "dress",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "chambray",
+        "cotton",
+        "patch pockets",
+        "fold-back collar",
+        "layerable",
+        "wrinkle-resistant",
+        "travel-friendly",
+        "road-trip",
+        "national-parks",
+        "relaxed fit"
+      ],
+      "colourHex": "#7a8e7e",
+      "colourFamily": "moss green",
+      "images": [
+        "/images/dress-001.jpg"
+      ],
+      "url": "/products/chambray-shirtdress",
+      "inStock": true,
+      "description": "The Chambray Shirtdress in moss green is a versatile cotton staple featuring patch pockets and a fold-back collar that transitions seamlessly from city streets to mountain trails. Wrinkle-resistant and designed with a relaxed fit, this travel-friendly layering piece is your go-to for spontaneous road trips and outdoor adventures.",
+      "imagePrompt": "women's chambray shirtdress in moss green cotton with patch pockets and fold-back collar, relaxed fit, travel-friendly style"
+    }
+  ],
+  "nbHits": 1,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

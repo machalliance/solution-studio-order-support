@@ -1,0 +1,1470 @@
+/* MACH Alliance brand tokens — lifted exactly from the Studio's reference
+   implementation, not approximated. This is the internal/tool-facing surface the
+   branding belongs on. */
+:root {
+  --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ink: #231F20;
+  --stone: #F5F4F1;
+  --hairline: #E3E1DC;
+  --muted: #65655F;
+  --white: #FFFFFF;
+  --radius: 4px;
+  --brand-yellow: #FFCB1B;
+  --brand-yellow-soft: #FFF6D6;
+  --accent: #231F20;
+  --accent-hover: #3D3739;
+  --green: #137334;
+  --green-soft: #eaf7ee;
+  --red: #b91c1c;
+  --red-soft: #fdecec;
+  /* Neutral-informational accent — the mockup color-codes each info box (customer,
+     shipping, order, policy); red/green already carry "problem"/"confirmed-good"
+     meaning elsewhere in this app, so a fifth, neutral hue covers the two boxes that
+     aren't inherently good or bad news. */
+  --blue: #2563eb;
+  --blue-soft: #eaf1fd;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--stone);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+
+/* SIDEBAR — replaces the old horizontal dark tool-bar (kept the same dark tone/brand
+   feel, just reflowed into a vertical rail). No top nav tabs anymore — Requiring
+   Attention / History / Policies / Settings all live here instead. */
+.desk-shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.desk-sidebar {
+  width: 208px;
+  flex-shrink: 0;
+  background: rgba(10, 10, 10, 0.94);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  padding: 14px 10px;
+  overflow-y: auto;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  text-decoration: none;
+}
+.nav-brand img { height: 20px; width: auto; display: block; flex-shrink: 0; }
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.desk-sidebar-spacer { flex: 1; }
+.nav-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 8px;
+}
+.nav-brand:focus-visible, .desk-sidebar-links a:focus-visible {
+  outline: 2px solid var(--brand-yellow);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Sidebar nav links (Requiring Attention / History / Policies / Settings). */
+.desk-sidebar-links { display: flex; flex-direction: column; gap: 2px; }
+.desk-sidebar-links a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  padding: 9px 12px;
+  border-radius: 6px;
+}
+.desk-sidebar-links a:hover { color: white; background: rgba(255, 255, 255, 0.06); }
+.desk-sidebar-links a[data-active="true"] { color: var(--ink); background: var(--brand-yellow); }
+.desk-sidebar-link-icon { flex-shrink: 0; }
+
+/* Right column: a slim top strip (just the rep-identity stub — search stays inline on
+   the queue page itself, the only page it makes sense on) above the scrollable page
+   content. */
+.desk-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.desk-topbar {
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: var(--white);
+  border-bottom: 1px solid var(--hairline);
+}
+.desk-topbar-spacer { flex: 1; }
+.rep-stub { display: flex; align-items: center; gap: 8px; }
+.rep-stub-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.rep-stub-info { display: flex; flex-direction: column; line-height: 1.3; }
+.rep-stub-name { font-size: 11.5px; font-weight: 600; color: var(--ink); }
+.rep-stub-status { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--muted); }
+.rep-stub-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+.rep-stub-status-online .rep-stub-dot { background: var(--green); }
+
+.desk-main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Narrow viewports: a vertical rail eats too much width from an already-tight screen —
+   collapse back to a horizontal bar (the shape this nav had before this redesign, and
+   already confirmed workable at phone width) rather than a from-scratch icon rail. */
+@media (max-width: 720px) {
+  .desk-shell { flex-direction: column; }
+  .desk-sidebar {
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 12px;
+    height: 44px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .nav-brand { padding: 6px 10px 6px 0; margin-bottom: 0; border-bottom: none; border-right: 1px solid rgba(255, 255, 255, 0.07); flex-shrink: 0; }
+  .desk-sidebar-links { flex-direction: row; flex-shrink: 0; }
+  .desk-sidebar-links a { padding: 6px 8px; white-space: nowrap; }
+  /* The logo + wordmark + four icon-and-label links don't fit a phone: the bar scrolled
+     sideways with "Histo…" cut off and Policies/Settings out of sight, with no hint that
+     anything was there. The wordmark (the logo and each page's own
+     heading already say where you are) and the link icons go, so all four labels fit. */
+  .nav-logo, .desk-sidebar-link-icon { display: none; }
+  .desk-sidebar-spacer { flex: 0 0 8px; }
+  .nav-meta { display: none; }
+}
+/* Smallest phones (≤375px wide): a touch tighter still, so the four links keep fitting.
+   overflow-x: auto on the bar remains the fallback below that. */
+@media (max-width: 400px) {
+  .desk-sidebar { padding: 0 8px; }
+  .desk-sidebar-links a { padding: 6px 6px; font-size: 12px; }
+}
+
+/* QUEUE */
+.queue-header {
+  padding: 20px 24px 8px;
+}
+.queue-header h1 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.queue-header p { color: var(--muted); font-size: 12.5px; margin: 0; }
+
+.queue-search {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 4px 24px 0;
+  padding: 9px 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+}
+.queue-search:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.queue-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 24px 32px;
+  display: grid;
+  /* minmax(0, 1fr), not the implicit `auto` track: an auto track grows to its items'
+     min-content, and a card holding one long unwrappable pill (a case's outcome reason is a
+     whole sentence) made EVERY card as wide as that sentence, running off the right edge of a
+     phone with the text clipped mid-word (History on a phone). */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+.queue-card {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+.queue-card:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(35, 31, 32, 0.06); }
+.queue-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.outcome-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  border: 1px solid var(--hairline);
+}
+.outcome-pill-approved { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+.outcome-pill-denied { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+.outcome-pill-error { background: var(--stone); border-color: var(--hairline); color: var(--muted); }
+/* Neutral handoff, not a failure — no refund decision was ever made, so this reads
+   as informational (same blue family used elsewhere for "neither good nor bad news"). */
+.outcome-pill-escalated_to_support { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); }
+/* Same pill, sized to sit in the case-detail header next to the customer name —
+   the history list's own version is small enough to fit a dense row instead. */
+.outcome-pill-lg { padding: 4px 12px; font-size: 11.5px; }
+.queue-card-top {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-bottom: 6px;
+}
+.queue-card-customer { font-family: var(--font-display); font-weight: 600; font-size: 14px; }
+.queue-card-order { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.queue-card-spacer { flex: 1; }
+.queue-card-age { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.queue-card-summary { font-size: 12.5px; color: var(--ink); margin-bottom: 8px; }
+.queue-card-bottom { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+/* The outcome reason in a pill is a full sentence, not a one-word tag — let it wrap inside the
+   card instead of forcing the card wider than the screen. A smaller radius so a wrapped
+   pill reads as a rounded box, not a stretched capsule (single-line pills look the same). */
+.queue-card-bottom .pill { max-width: 100%; white-space: normal; overflow-wrap: anywhere; border-radius: 14px; }
+.queue-empty {
+  margin: 40px 24px;
+  padding: 32px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--hairline);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Shared badges */
+.pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--hairline);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.pill-high { border-color: var(--red); color: var(--red); background: rgba(185, 28, 28, 0.06); }
+.pill-normal { border-color: var(--hairline); color: var(--muted); }
+.pill-low { border-color: var(--hairline); color: var(--muted); background: var(--stone); }
+.pill-action {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  /* Was the brand-yellow highlight, same as .response-countdown — freed up so yellow
+     reads as one specific signal (the live, ticking clock) instead of two unrelated
+     pills sharing a colour on the same card. This is descriptive ("what we'd do"),
+     not time-sensitive, so it gets the same neutral outline as the reason-code pill
+     next to it. */
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+}
+
+/* Customer-level fact (fixtures/demo-data.ts's Customer.vip), not a case-level one —
+   looked up fresh by server.ts rather than frozen on the case at escalation time. Full
+   brand yellow so it reads as a distinct signal worth a rep's attention at a glance,
+   not just another status pill. */
+.pill-vip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 1px 7px;
+  border-radius: 100px;
+  background: var(--brand-yellow);
+  color: var(--ink);
+  vertical-align: middle;
+}
+h1 .pill-vip { margin-left: 10px; font-size: 11px; }
+
+/* Live response-time countdown — how long until this case breaches escalationSlaMinutes
+   (Settings), ticking every second. Same three pause states the SLA sweep itself already
+   respects (server.ts's check-timeouts): a ticket already opened, or the case waiting on
+   the CUSTOMER's own reply, isn't a clock the rep can fail, so those read as fixed status
+   text instead of a countdown. font-variant-numeric keeps the digits from jittering the
+   layout width as they tick down. */
+.response-countdown {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 100px;
+  /* --muted (#65655F) reads as washed-out at this small pill size — this is the one
+     figure in the whole card the rep needs to actually read (same reasoning as the
+     storefront's own SlaCountdown fix), so it gets full --ink contrast for the entire
+     normal-priority life of the countdown, not just once it turns red/urgent below. */
+  color: var(--ink);
+  /* --stone read as barely-there here — practically the same lightness as the card
+     background, so the pill with its own border was the only thing marking it as a
+     pill at all. Reusing the brand-yellow highlight (.pill-action, .result-banner's
+     own background/border pairing) makes this pop the way an actively-ticking clock
+     should, not just a neutral label. */
+  background: var(--brand-yellow-soft);
+  border: 1px solid var(--brand-yellow);
+  white-space: nowrap;
+}
+.response-countdown-urgent,
+.response-countdown-overdue {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(185, 28, 28, 0.06);
+}
+
+/* DETAIL */
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin: 20px 24px 4px;
+}
+.detail-back:hover { color: var(--ink); }
+
+.detail-header {
+  padding: 4px 24px 16px;
+  border-bottom: 1px solid var(--hairline);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.detail-header h1 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+.detail-sub { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+.detail-header-spacer { flex: 1; }
+
+/* ── Decision-needed hero ── */
+.decision-hero {
+  margin: 20px 24px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: var(--brand-yellow-soft);
+  border: 1px solid var(--brand-yellow);
+  border-radius: 10px;
+}
+.decision-hero-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: var(--brand-yellow);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.decision-hero-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.decision-hero-headline { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+.decision-hero-desc { font-size: 13.5px; color: var(--muted); margin: 0; }
+/* Resolved-case hero — same shape, colored by outcome instead of the "decision
+   needed" yellow (this case has already been decided, nothing left to flag). */
+.decision-hero-approved { background: var(--green-soft); border-color: var(--green); }
+.decision-hero-approved .decision-hero-icon { background: var(--green); color: var(--white); }
+.decision-hero-denied,
+.decision-hero-error { background: var(--red-soft); border-color: var(--red); }
+.decision-hero-denied .decision-hero-icon,
+.decision-hero-error .decision-hero-icon { background: var(--red); color: var(--white); }
+.decision-hero-escalated_to_support { background: var(--blue-soft); border-color: var(--blue); }
+.decision-hero-escalated_to_support .decision-hero-icon { background: var(--blue); color: var(--white); }
+
+/* ── Four always-present boxes: Customer Request | Shipping Info | Order Summary |
+   Policy Exception, side by side regardless of case type. Each gets a colored icon
+   badge (blue = neutral/informational, green = confirmed-good, red = the exception
+   worth flagging) so the row reads at a glance instead of as four identical cards. ── */
+.info-box-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 16px 24px 0;
+}
+.info-box { border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px; background: var(--white); }
+.info-box-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.info-box h3 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0;
+}
+.info-box-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info-box-icon-blue { background: var(--blue-soft); color: var(--blue); }
+.info-box-icon-green { background: var(--green-soft); color: var(--green); }
+.info-box-icon-red { background: var(--red-soft); color: var(--red); }
+.info-box p { font-size: 12.5px; margin: 0 0 6px; line-height: 1.4; }
+.info-box p:last-child { margin-bottom: 0; }
+.info-box-amount { font-family: var(--font-mono); font-weight: 600; color: var(--ink); }
+.info-box-policy p { color: var(--red); }
+/* Resolution box's own "approved" text — see runs/[runId]/page.tsx's own comment for why
+   this override exists: .info-box-policy's red default is right for a Policy Exception
+   (always a caution) but wrong for a resolved refund that actually went through. */
+.info-box-policy p.resolution-text-ok { color: var(--ink); }
+.info-box-pill {
+  display: inline-block;
+  margin-top: 4px;
+  margin-right: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+.info-box-pill-red { background: var(--red-soft); color: var(--red); }
+.info-box-pill-green { background: var(--green-soft); color: var(--green); }
+.info-box-pill-blue { background: var(--blue-soft); color: var(--blue); }
+@container (max-width: 720px) {
+  .info-box-grid { grid-template-columns: 1fr 1fr; }
+}
+@container (max-width: 420px) {
+  .info-box-grid { grid-template-columns: 1fr; margin-left: 14px; margin-right: 14px; }
+}
+
+/* ── Case-context row: the delivery-dispute-only "Side by side" comparison on the
+   left, the always-present Case timeline on the right — a two-up row so the timeline
+   isn't stranded alone in an otherwise-empty width on the common (non-dispute) case. ── */
+.case-context-row { display: flex; align-items: stretch; gap: 12px; margin: 12px 24px 0; }
+/* Both cards in this row share one card treatment (border/radius/padding/white bg) so
+   they align top and bottom regardless of which one has more content — previously only
+   .case-timeline-box had its own frame, leaving Side by side's colored columns floating
+   with no matching outer edge. */
+.side-by-side-block, .case-timeline-box {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+.side-by-side-heading { font-family: var(--font-display); font-size: 14px; font-weight: 600; margin: 0 0 10px; }
+@container (max-width: 640px) {
+  .case-context-row { flex-direction: column; margin-left: 14px; margin-right: 14px; }
+}
+
+/* ── Comparison widget — shown for every case type now (not just delivery disputes):
+   Customer Info (their own account, from problemSummary) beside System Info (the
+   deterministic policy/carrier finding, from explanation — the same field the Policy
+   Exception box above already shows, just bulleted for scanability). Colors/borders
+   (red customer, green system) and the "VS" divider are UNCHANGED from the original
+   dispute-only design — a delivery dispute is a genuine claim-vs-record disagreement,
+   so that treatment stays exactly as it was. Only case types OTHER than
+   delivery_dispute get the .comparison-widget-no-vs variant (no VS, 2-column grid) —
+   there's no actual disagreement to stage for those, just two related facts. */
+.comparison-widget {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 12px;
+  flex: 1;
+}
+.comparison-widget-no-vs { grid-template-columns: 1fr 1fr; }
+.comparison-col { border-radius: 8px; padding: 12px 14px; }
+.comparison-col-customer { background: var(--red-soft); border: 1px solid var(--red); }
+.comparison-col-system { background: var(--green-soft); border: 1px solid var(--green); }
+.comparison-col h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.comparison-col ul { margin: 0; padding-left: 16px; font-size: 12.5px; line-height: 1.5; }
+.comparison-vs {
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+@container (max-width: 500px) {
+  .comparison-widget { grid-template-columns: 1fr; }
+  .comparison-vs { justify-self: center; }
+}
+
+/* ── Case timeline — case-lifecycle events (case opened, a related case linked, the
+   order's own placed/delivered dates), distinct from the Conversation tab's actual
+   chat transcript. Built from fields the case already carries (see
+   buildTimelineEntries) — no new backend data. */
+.case-timeline-header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.case-timeline-header h3 { font-family: var(--font-display); font-size: 14px; font-weight: 600; margin: 0; }
+.case-timeline-view-all {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.case-timeline-view-all:hover { text-decoration: underline; }
+.case-timeline-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.case-timeline-item { display: flex; gap: 10px; }
+.case-timeline-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.case-timeline-dot-blue { background: var(--blue); }
+.case-timeline-dot-red { background: var(--red); }
+.case-timeline-dot-gray { background: var(--muted); }
+.case-timeline-when { font-family: var(--font-mono); font-size: 10.5px; color: var(--muted); }
+.case-timeline-label { font-size: 13px; font-weight: 500; }
+.case-timeline-desc { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+/* ── Two-column body: case details scroll on the left (.detail-main, the page's own
+   scroll via .desk-main); Conversation / Customer & Order runs the full height of the
+   right the way the mockup has it — pinned in place (position: sticky, so it doesn't
+   scroll away with the left column) with its OWN internal scroll, reaching down to
+   just short of the fixed decision bar at the bottom (same 340px clearance the
+   .detail-floating-spacer below reserves for that bar's tallest expanded state).
+   100vh - 44px approximates .desk-main's own viewport height (44px == .desk-topbar);
+   an approximation, not pixel-exact, but this is a demo shell, not a resizable app. ── */
+.detail-body { display: flex; align-items: flex-start; }
+/* Sizes the @container queries below against this column's own rendered width, not
+   the full viewport — the sidebar and chat panel now permanently consume real width,
+   so a viewport-relative breakpoint (e.g. "900px") would trigger at the wrong point
+   for what THIS column actually has available. */
+.detail-main { flex: 1; min-width: 0; container-type: inline-size; }
+.detail-side {
+  width: 380px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--hairline);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  /* max-height, not height — a fixed height forced .detail-body (the flex row) to
+     always be this tall, which pushed everything below it (Activity, the floating-bar
+     spacer) down by the same amount even on a short case with little left-column
+     content, leaving a large dead gap above Activity — live-reported: "View full
+     timeline opens space... but it's nothing." max-height caps it once content is long
+     (a big transcript) without forcing that height on a case that doesn't need it. */
+  max-height: calc(100vh - 44px - 340px);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.detail-tabs { display: flex; gap: 4px; padding: 16px 20px 0; border-bottom: 1px solid var(--hairline); flex-shrink: 0; }
+.detail-tabs button {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 4px;
+  margin-right: 18px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.detail-tabs button[data-active="true"] { color: var(--ink); border-bottom-color: var(--brand-yellow); font-weight: 600; }
+.detail-side-content { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 20px 20px; }
+.customer-order-tab { margin: 0; }
+@media (max-width: 900px) {
+  /* A sticky, viewport-height side column stops making sense once there's no spare
+     width for it — collapse back to the original stacked order (case details, then
+     the conversation) with normal page-flow scrolling for both. */
+  /* align-items: stretch is essential, not cosmetic: the base rule's flex-start, kept in a
+     column, sizes every child to its CONTENT width instead of the container's — and
+     .detail-main has container-type: inline-size, whose content-based inline size is ZERO,
+     so the whole left column (every banner and card in it) collapsed to just its own
+     padding, text wrapping one word per line. */
+  .detail-body { flex-direction: column; align-items: stretch; }
+  /* max-height: none — the desktop cap exists for the sticky, internally-scrolling column;
+     here the column is static and the page itself scrolls, as the comment above says. */
+  .detail-side { width: auto; border-left: none; border-top: 1px solid var(--hairline); position: static; height: auto; max-height: none; }
+}
+
+/* ── Floating action bar — the decision tabs, fields, and submit button, pinned to the
+   bottom of the viewport instead of sitting inline below the case content, so the
+   decision controls are always reachable without scrolling. left:208px matches the
+   sidebar's own width (see .desk-sidebar) so the bar doesn't run under it; the
+   @media block below drops that offset to match the sidebar's own mobile collapse. ── */
+.decision-floating-bar {
+  position: fixed;
+  left: 208px;
+  right: 0;
+  bottom: 0;
+  z-index: 500;
+  background: var(--white);
+  border-top: 1px solid var(--hairline);
+  box-shadow: 0 -4px 16px rgba(20, 20, 16, 0.08);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.decision-floating-bar .decision-panel { border-top: none; padding: 14px 24px; }
+.detail-floating-spacer { height: 340px; }
+@media (max-width: 720px) {
+  .decision-floating-bar { left: 0; }
+}
+@media (max-width: 560px) {
+  .decision-floating-bar .decision-panel { padding: 14px; }
+}
+
+/* ── "Recommended" badge — floats above its decision tab (see .decision-tab-wrap),
+   matching the mockup's own small overlapping pill instead of text crammed inside the
+   button. A deterministic default (see recommendedDecisionFor), never a scored
+   confidence value. ── */
+.recommended-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--ink);
+  color: var(--white);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+@media (max-width: 560px) {
+  .queue-header, .queue-list, .detail-header { padding-left: 14px; padding-right: 14px; }
+  .detail-header { flex-wrap: wrap; gap: 8px; }
+  .thread-row { max-width: 96%; }
+}
+
+/* Conversation thread — sizing/positioning now lives on .detail-side (the tabbed
+   container), this is just the message list itself. */
+/* Capped height + its own scrollbar rather than growing the whole page — a long back-
+   and-forth (an escalated case with several "request more info" round trips) could
+   otherwise push the decision controls in the left column far below the fold. Scrolled
+   to the latest message on load (see the runId detail page's own useEffect). */
+/* No max-height/scroll of its own anymore — the whole page scrolls (see .desk-main),
+   and the floating action bar below stays reachable regardless of scroll position, so a
+   second, nested scroll region here just adds confusion. */
+.thread-list { display: flex; flex-direction: column; gap: 14px; padding-right: 6px; }
+/* Each row pairs an avatar circle with its bubble, mirroring the reference mockup's
+   chat rather than a bare bubble-only list. row-reverse on the agent side puts its
+   avatar on the right without needing a second, mirrored markup shape. */
+.thread-row { display: flex; align-items: flex-end; gap: 8px; max-width: 88%; }
+.thread-row.customer { align-self: flex-start; }
+.thread-row.agent { align-self: flex-end; flex-direction: row-reverse; }
+.thread-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+}
+.thread-row.customer .thread-avatar { background: var(--stone); border: 1px solid var(--hairline); color: var(--ink); }
+.thread-row.agent .thread-avatar { background: var(--ink); color: var(--white); }
+.thread-msg { padding: 9px 12px; border-radius: 10px; font-size: 12.5px; line-height: 1.45; min-width: 0; }
+.thread-msg.customer { background: var(--stone); border: 1px solid var(--hairline); }
+.thread-msg.agent { background: var(--ink); color: var(--white); }
+.thread-msg-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+.thread-msg-role { font-family: var(--font-display); font-size: 11.5px; font-weight: 600; }
+.thread-msg-time {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  opacity: 0.55;
+}
+.thread-msg-photo-btn {
+  display: block;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  margin-top: 8px;
+}
+.thread-msg-photo {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.thread-msg.customer .thread-msg-photo { border-color: var(--hairline); }
+.thread-msg-photo-btn:focus-visible { outline: 2px solid var(--brand-yellow); outline-offset: 2px; }
+
+/* ── PHOTO LIGHTBOX — sized off inset:0 (the real visual viewport), not vw/vh, same
+   reasoning as the storefront's fixed chat panel: vw/vh can compute against a larger
+   viewport than what's actually visible on some mobile browsers. ── */
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  cursor: zoom-out;
+}
+.photo-lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: default;
+}
+.photo-lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+}
+.photo-lightbox-close:hover { opacity: 0.7; }
+.photo-lightbox-close:focus-visible { outline: 2px solid var(--brand-yellow); outline-offset: 2px; }
+
+/* Customer & Order tab — customer identity, order dates, and a real per-item price
+   breakdown (run.items, resolved server-side against the order's own catalog data). */
+.cust-order-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.cust-order-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+}
+.cust-order-name { font-size: 13.5px; font-weight: 600; }
+.cust-order-sub { font-size: 11.5px; color: var(--muted); }
+.cust-order-section-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.cust-order-dates { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.cust-order-items { list-style: none; margin: 0 0 10px; padding: 0; border: 1px solid var(--hairline); border-radius: 8px; overflow: hidden; }
+.cust-order-item-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+}
+.cust-order-item-row + .cust-order-item-row { border-top: 1px solid var(--hairline); }
+.cust-order-item-price { font-family: var(--font-mono); color: var(--ink); flex-shrink: 0; }
+.cust-order-total-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--stone);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.decision-panel { padding-top: 0; }
+/* One row: "Make a decision" on the left, a divider, then the decision tabs — matching
+   the mockup's single-row bottom bar instead of two stacked rows. No icon here — tried
+   one (a small badge before the heading) and it read as an odd, off-balance addition
+   rather than matching the mockup's own cleaner look, so it's gone rather than
+   re-guessed a second time. */
+.decision-panel-top { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+.decision-panel-heading { display: flex; flex-direction: column; gap: 1px; flex-shrink: 0; }
+.decision-panel-heading strong { font-family: var(--font-display); font-size: 14.5px; }
+.decision-panel-heading span { font-size: 12px; color: var(--muted); }
+.decision-panel-divider { width: 1px; align-self: stretch; background: var(--hairline); flex-shrink: 0; }
+.decision-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+/* A regular @media query is correct here (not @container like the info boxes above) —
+   .decision-floating-bar spans edge-to-edge under both columns, so its width is a
+   simple function of the viewport, not narrowed by the chat sidebar the way
+   .detail-main is. */
+@media (max-width: 640px) {
+  .decision-panel-divider { display: none; }
+}
+/* Wraps each tab so its "Recommended" badge can float above it (mockup: a small pill
+   overlapping the button's top edge, not text crammed inside the button itself). */
+.decision-tab-wrap { position: relative; display: inline-flex; padding-top: 11px; }
+.decision-tab {
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 12px 20px;
+  min-height: 46px;
+  border-radius: 100px;
+  border: 1.5px solid var(--hairline);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.decision-tab:hover { border-color: var(--muted); }
+.decision-tab[data-active="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.decision-tab[data-decision="approve"][data-active="true"] { background: var(--green); border-color: var(--green); }
+.decision-tab[data-decision="reject"][data-active="true"] { background: var(--red); border-color: var(--red); }
+/* The recommended action gets a real solid fill, not just a badge — this is the one
+   the mockup visually pushes a rep toward, same "one clear highlight" idea as the
+   brand-yellow countdown/action pills elsewhere in this app. */
+.decision-tab[data-recommended="true"] { background: var(--brand-yellow); border-color: var(--brand-yellow); color: var(--ink); }
+.decision-tab[data-recommended="true"]:hover { background: var(--brand-yellow); border-color: var(--ink); }
+.decision-tab[data-recommended="true"][data-active="true"] { background: var(--ink); border-color: var(--ink); color: var(--white); }
+/* recommendedDecisionFor only ever returns "approve" or "request_more_info" — this is
+   the only recommended+active combination reachable in practice. */
+.decision-tab[data-decision="approve"][data-recommended="true"][data-active="true"] { background: var(--green); border-color: var(--green); }
+
+.decision-field { margin-bottom: 12px; }
+.decision-field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.decision-field input, .decision-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  background: var(--stone);
+  outline: none;
+  resize: vertical;
+}
+.decision-field input:focus, .decision-field textarea:focus { border-color: var(--accent); }
+.decision-field input[aria-invalid="true"] { border-color: var(--red); }
+.decision-field-hint { text-transform: none; letter-spacing: normal; color: var(--muted); font-family: var(--font); }
+.decision-field-error { margin: 4px 0 0; font-size: 12px; color: var(--red); }
+/* A heads-up under a decision's own field: it does not block submitting, it says what submitting will do. */
+.decision-note { margin: 8px 0 0; padding: 8px 10px; border: 1px solid #e6d28a; background: #fff8dc; border-radius: 8px; font-size: 12.5px; line-height: 1.4; }
+/* Its own container rather than .decision-field — that class's `input { width: 100% }`
+   styling (meant for text inputs) would stretch a checkbox across the whole bar. */
+.decision-checkbox-field { margin-bottom: 12px; }
+.decision-checkbox-label { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--ink); cursor: pointer; }
+.decision-checkbox-label input { margin: 3px 0 0; flex-shrink: 0; }
+.decision-checkbox-hint { display: block; margin-top: 2px; font-size: 11.5px; color: var(--muted); }
+
+.decision-submit {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  min-height: 44px;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 22px;
+  border: none;
+  color: white;
+  background: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(35, 31, 32, 0.28);
+}
+.decision-submit:hover { background: var(--accent-hover); }
+.decision-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.decision-submit[data-decision="approve"] { background: var(--green); }
+.decision-submit[data-decision="reject"] { background: var(--red); }
+
+.detail-loading, .detail-error {
+  padding: 40px 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+/* ── Agent Trail — a floating button + popover instead of the old inline,
+   scroll-to-reach section (moved per explicit request: "bottom right, just above
+   'Make a decision'"). The button's own `bottom` is set inline from JS (see the
+   caller's decisionBarRef/ResizeObserver comment) since the decision bar's real
+   height varies by state — a plain CSS value here would either leave a gap or
+   overlap it depending on which state the rep is in. z-index sits above the
+   decision bar (500) so the button/panel are never hidden behind it. ── */
+.agent-trail-fab {
+  position: fixed;
+  right: 24px;
+  z-index: 600;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  background: var(--ink);
+  border: none;
+  border-radius: 100px;
+  padding: 7px 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(35, 31, 32, 0.22);
+}
+.agent-trail-fab:hover { background: #3a3536; }
+.agent-trail-backdrop { position: fixed; inset: 0; z-index: 599; background: transparent; }
+.agent-trail-panel {
+  position: fixed;
+  right: 24px;
+  z-index: 600;
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(20, 20, 16, 0.18);
+  overflow: hidden;
+}
+.agent-trail-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.agent-trail-panel-note {
+  display: block;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.75;
+  margin-top: 2px;
+}
+.agent-trail-panel-close {
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+}
+.agent-trail-panel-body { overflow-y: auto; padding: 12px 14px 14px; }
+.agent-trail-empty { padding: 0; margin: 0; color: var(--muted); font-size: 12.5px; }
+.agent-trail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+/* flex-wrap, not a fixed grid — the panel (420px, or narrower on mobile) is much
+   tighter than the old inline section (which had the full page width to work with),
+   so a 5-column grid of status/name/type/duration/time reliably overflowed into a
+   horizontal scrollbar. Wrapping lets the trailing columns drop to a second line
+   instead. */
+.agent-trail-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 8px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  background: var(--stone);
+  font-size: 12px;
+}
+.agent-trail-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 100px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px solid var(--hairline);
+}
+.agent-trail-status-ok, .agent-trail-status-success { color: var(--green); border-color: var(--green); }
+.agent-trail-status-error { color: var(--red); border-color: var(--red); }
+.agent-trail-name { font-weight: 500; flex: 1 1 140px; }
+.agent-trail-type, .agent-trail-duration, .agent-trail-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .agent-trail-fab, .agent-trail-panel { right: 14px; }
+  .agent-trail-time { display: none; }
+}
+
+.result-banner {
+  margin: 16px 24px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  background: var(--brand-yellow-soft);
+  border: 1px solid var(--brand-yellow);
+}
+
+.related-case-banner {
+  margin: 16px 24px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--red-soft);
+  border: 1px solid var(--red);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.related-case-icon { color: var(--red); font-size: 15px; line-height: 1.4; flex-shrink: 0; }
+.related-case-body { flex: 1; min-width: 0; }
+.related-case-title { font-weight: 600; font-size: 13px; color: var(--red); margin-bottom: 2px; }
+.related-case-desc { font-size: 12.5px; color: var(--red); }
+.related-case-view-btn {
+  flex-shrink: 0;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--red);
+  background: var(--white);
+  color: var(--red);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.related-case-view-btn:hover { background: var(--red-soft); }
+@media (max-width: 640px) {
+  /* A grid, not flex-wrap: with wrap the text column (flex: 1) never gives up its row, so a
+     banner carrying a "View case" button squeezed its text into a ~150px sliver beside the
+     button. Icon + text stay on row one; the button drops under the text, aligned with it. */
+  .related-case-banner { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 10px; margin-left: 14px; margin-right: 14px; }
+  .related-case-view-btn { grid-column: 2; justify-self: start; }
+  /* Same 14px side margin the context cards (.case-context-row) already use at this width,
+     so the hero box lines up with the banners and cards instead of sitting 10px further in. */
+  .decision-hero { margin-left: 14px; margin-right: 14px; }
+}
+
+
+/* Settings page — mirrors queue-header's typographic scale, one section per policy
+   lever (own state, own Save button, own status message), same shape the storefront's
+   old Settings page used before these moved here. */
+.settings-page { padding-bottom: 40px; }
+.settings-section {
+  margin: 0 24px 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+}
+.settings-section:first-of-type { border-top: none; padding-top: 0; }
+.settings-section h2 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.settings-lede { color: var(--muted); font-size: 12.5px; margin: 0 0 14px; max-width: 640px; line-height: 1.5; }
+.settings-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.settings-input {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  width: 76px;
+  padding: 9px 10px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+}
+.settings-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.settings-unit { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.settings-save-button {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  background: var(--accent);
+  cursor: pointer;
+}
+.settings-save-button:hover { background: var(--accent-hover); }
+.settings-save-button:disabled { opacity: 0.5; cursor: not-allowed; }
+.settings-status { margin-top: 10px; font-size: 12.5px; color: var(--muted); max-width: 560px; }
+
+/* Policies page (mastra/policy/* on the agent side) — the Policy Helper authoring
+   surface. Reuses settings-section/-row/-input/-save-button/-status throughout; these
+   are only the pieces that page needs beyond what settings/page.tsx already defined. */
+.policy-helper-textarea { width: 100%; max-width: 640px; min-height: 64px; font-family: var(--font); resize: vertical; }
+.policy-manual-editor {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  min-height: 200px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+  white-space: pre;
+  overflow: auto;
+}
+/* Collapsed by default — the raw-JSON editor is the most rarely-needed control on
+   this page (the Policy Helper is the primary path) and, expanded, was the single
+   largest thing on the page; per explicit user request, tucked behind a disclosure
+   instead of always taking up that space. */
+.policy-manual-edit-details > summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 4px 0;
+  list-style: revert;
+}
+.policy-manual-edit-details[open] > summary { margin-bottom: 10px; }
+
+/* "Policy workspace" vs. "Version history" tabs — history is a plain past-versions list with nothing to do with the
+   day-to-day authoring tools, so it gets its own tab rather than sitting as one more
+   stacked section below them. Ported to match the reference mockup's own .ed-tabs
+   values directly (21px gap, plain inherited body weight, top+bottom breathing room)
+   rather than approximated from this app's own unrelated .detail-tabs pattern. */
+.policy-tabs { display: flex; gap: 21px; border-bottom: 1px solid var(--hairline); margin: 20px 24px; }
+.policy-tabs button {
+  padding: 0 0 11px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.policy-tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.policy-tab-count { font-size: 11px; color: var(--muted); margin-left: 4px; }
+
+/* Card treatment for the Policies page — a SEPARATE class from
+   .settings-section rather than restyling it, since that class is shared with the real
+   Settings page (settings/page.tsx); giving it card chrome here would have restyled a
+   page nobody asked to change. Typography/control classes (.settings-lede/-row/-input/
+   -save-button/-status) stay shared — only the section's own container chrome differs. */
+.policy-card {
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 0 24px 16px;
+}
+.policy-card h2 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+/* Active version + Policy Helper side by side — "what the policy says" and "how you'd
+   change it" are different tasks, worth keeping visually separate rather than stacked.
+   Collapses to one column on a narrow viewport; the plain .policy-card margin is
+   canceled here since the grid's own gap/page margin already provide the spacing. */
+.policy-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; margin: 0 24px 16px; }
+.policy-columns .policy-card { margin: 0; }
+@media (max-width: 900px) {
+  .policy-columns { grid-template-columns: 1fr; }
+}
+
+/* The plain-English synopsis's own scrollable "bubble" — a distinct, rounded, off-white
+   surface nested inside a .policy-card, set apart from the card's own white chrome so it
+   reads as a document in its own right rather than plain text floating on the page (per
+   explicit user request). Caps height and scrolls internally rather than letting a long
+   synopsis (several case types, many rules each) stretch the whole card indefinitely. */
+.policy-bubble {
+  background: var(--stone);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: 14px 18px;
+  max-height: 340px;
+  overflow-y: auto;
+  margin: 10px 0 14px;
+}
+.policy-bubble .policy-synopsis { margin: 0; max-width: none; }
+
+/* Plain-English policy synopsis (PolicySynopsisView.tsx) — ported to match the
+   reference mockup's own structure: a case-type <select> showing one case
+   type's rules at a time (not three stacked collapsible sections — an earlier, wrong
+   reading of "pull-down headings"), plain divider-separated rows, settings pulled out
+   into their own sibling disclosure (.policy-settings-details, below) that sits OUTSIDE
+   this scrollable bubble rather than nested inside it. */
+.policy-synopsis { max-width: 720px; margin: 10px 0 16px; }
+.policy-synopsis-heading { font-family: var(--font-display); font-size: 14px; font-weight: 500; margin: 12px 0 0; color: var(--ink); }
+.policy-case-select {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--hairline);
+  background: var(--white);
+  color: var(--ink);
+  padding: 9px;
+  border-radius: 5px;
+  margin: 8px 0 4px;
+  font: inherit;
+  font-size: 13px;
+}
+.policy-synopsis-case > p:first-of-type { margin-top: 8px; }
+/* Rules are grouped by who they apply to (restrictions first, then automatic decisions). */
+.policy-synopsis-section { margin-top: 18px; }
+.policy-synopsis-group-title { margin: 12px 0 0; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.policy-synopsis-rules { margin: 4px 0 0; }
+.policy-synopsis-rule { padding: 13px 0; border-bottom: 1px solid var(--hairline); }
+.policy-synopsis-rule:last-child { border-bottom: none; }
+.policy-synopsis-when { font-size: 13px; color: var(--ink); font-weight: 500; }
+.policy-synopsis-number { display: inline-block; min-width: 30px; margin-right: 8px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--muted); }
+/* Policy number badge on a case (PolicyRefBadge) — hover/focus shows the rule's wording. */
+.policy-ref { position: relative; display: inline-flex; margin-left: auto; }
+.policy-ref-number { font-family: var(--font-mono); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--hairline); background: var(--white); color: var(--ink); cursor: help; }
+.policy-ref-text { display: none; position: absolute; right: 0; top: calc(100% + 6px); z-index: 30; width: 300px; max-width: 80vw; padding: 10px 12px; border-radius: 6px; background: var(--ink); color: var(--white); font-size: 12px; font-weight: 400; line-height: 1.45; white-space: pre-line; text-align: left; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); }
+.policy-ref:hover .policy-ref-text, .policy-ref:focus-within .policy-ref-text { display: block; }
+.policy-ref-version { display: block; margin-top: 6px; font-size: 11px; opacity: 0.7; }
+.policy-synopsis-then { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.policy-synopsis-then strong { color: var(--ink); }
+.policy-synopsis-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-right: 4px;
+}
+.policy-synopsis-badge-green { background: var(--green-soft); color: var(--green); }
+.policy-synopsis-badge-red { background: var(--red-soft); color: var(--red); }
+.policy-synopsis-badge-blue { background: var(--blue-soft); color: var(--blue); }
+
+/* "Policy settings" — a sibling disclosure after the bubble, matching the mockup's own
+   simple top-border-divided details with label/value rows (its own .ed-test-row). */
+.policy-settings-details { border-top: 1px solid var(--hairline); padding-top: 13px; margin-top: 14px; font-size: 12px; }
+.policy-settings-details > summary { cursor: pointer; font-weight: 500; font-family: var(--font-display); font-size: 13px; color: var(--ink); list-style: revert; }
+.policy-settings-row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--hairline); color: var(--muted); }
+.policy-settings-row:last-child { border-bottom: none; }
+.policy-settings-row code { font-family: var(--font-mono); font-weight: 600; color: var(--ink); }
+.policy-validation-error {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  max-width: 640px;
+}
+.policy-validation-error { background: var(--red-soft); color: var(--red); }
+.policy-validation-error ul { margin: 6px 0 0; padding-left: 18px; }
+.policy-validation-error code { font-family: var(--font-mono); }
+.policy-document-preview { margin: 10px 0; max-width: 960px; }
+.policy-document-preview summary { cursor: pointer; font-size: 13px; color: var(--ink); font-family: var(--font-mono); padding: 2px 0; }
+.policy-json {
+  margin-top: 8px;
+  padding: 16px;
+  background: var(--stone);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.55;
+  max-height: 640px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* Syntax coloring — a well-known regex-based JSON tokenizer (PolicyJson.tsx), not a
+   pulled-in library, same "small dependency-free visual need" precedent as icons.tsx.
+   Escaped before highlighting, so nothing in a document's own text (an LLM-generated
+   description) can inject markup — see that component's own comment. */
+.policy-json-key { color: var(--ink); font-weight: 600; }
+.policy-json-string { color: var(--green); }
+.policy-json-number { color: var(--blue); }
+.policy-json-boolean { color: var(--red); font-weight: 600; }
+.policy-json-null { color: var(--muted); font-style: italic; }
+.policy-version-list { list-style: none; padding: 0; margin: 0; font-size: 12.5px; }
+.policy-version-list li { padding: 6px 0; border-bottom: 1px solid var(--hairline); font-family: var(--font-mono); }
+.policy-version-list li:last-child { border-bottom: none; }
+
+@media (max-width: 560px) {
+  .settings-section { margin-left: 14px; margin-right: 14px; }
+}
+
+/* Approved Policies UI refinement; scoped to the Policies page. */
+.policy-refined { max-width: 1600px; margin: 0 auto; }
+.policy-refined .queue-header h1 { font-size: 30px; letter-spacing: -.7px; }
+.policy-refined .queue-header p { font-size: 13px; max-width: 760px; }
+.policy-refined .policy-columns { grid-template-columns: minmax(0,1fr) minmax(0,1.04fr); gap: 22px; align-items: start; }
+.policy-refined .policy-card { border-radius: 9px; min-width: 0; padding: 23px; }
+.policy-panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.policy-refined .policy-panel-heading h2 { font-size: 17px; font-weight: 500; margin: 0; }
+.policy-label { display: inline-block; border: 1px solid var(--hairline); background: var(--stone); border-radius: 5px; padding: 4px 8px; font-size: 11px; white-space: nowrap; }
+.policy-refined .policy-helper-card { border-top: 3px solid var(--brand-yellow); padding-top: 21px; }
+.policy-ai-label { font-size: 10px; letter-spacing: .04em; padding: 5px 8px; border-radius: 4px; background: var(--brand-yellow-soft); }
+.policy-refined .policy-helper-card > .settings-lede { font-size: 14px; line-height: 1.7; margin: 17px 0; }
+.policy-request-label { display: block; font-size: 13px; font-weight: 500; margin: 0 0 10px; }
+.policy-refined .policy-helper-textarea { max-width: none; min-height: 155px; font-size: 14px; line-height: 1.65; padding: 14px; border-radius: 6px; background: var(--white); }
+.policy-example { display: block; width: 100%; text-align: left; border: 0; padding: 12px 0; font: inherit; font-size: 11px; color: var(--muted); background: none; cursor: pointer; }
+.policy-example:hover { color: var(--ink); }
+.policy-refined .policy-generate { width: 100%; padding: 12px; margin-top: 6px; border: 1px solid var(--brand-yellow); background: var(--brand-yellow); color: var(--ink); font-size: 13px; border-radius: 6px; }
+.policy-refined .policy-bubble { max-height: none; overflow: visible; border-radius: 7px; padding: 17px; margin: 18px 0; }
+.policy-refined .policy-synopsis-heading { margin-top: 0; }
+.policy-refined .policy-synopsis-rule { padding: 15px 0; }
+.policy-refined .policy-synopsis-then { line-height: 1.65; margin-top: 7px; }
+.policy-refined .policy-synopsis-badge { font-family: var(--font); font-size: 11px; font-weight: 500; border-radius: 4px; }
+.policy-refined .policy-json { max-height: min(110vh, 1000px); overflow: auto; overscroll-behavior: contain; font-size: 12px; overflow-wrap: anywhere; }
+.policy-refined .policy-document-preview { max-width: none; border-top: 1px solid var(--hairline); padding-top: 14px; }
+.policy-refined .policy-document-preview summary, .policy-refined .policy-manual-edit-details summary { font-family: var(--font); font-size: 13px; font-weight: 500; cursor: pointer; }
+.policy-request { border-left: 3px solid var(--brand-yellow); background: var(--stone); padding: 15px 18px; margin: 20px 0; font-size: 14px; }
+.policy-request > span { display: block; color: var(--muted); font-size: 11px; margin-bottom: 7px; }
+.policy-refined .policy-manual-editor { max-width: none; white-space: pre-wrap; overflow-wrap: anywhere; }
+.policy-refined .policy-version-list li { padding: 18px 0; font-family: var(--font); }
+/* A version row: text on the left, Revert / "Live" on the right; wraps under the text on a phone. */
+.policy-version-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.policy-version-text { flex: 1 1 260px; min-width: 0; overflow-wrap: anywhere; }
+.policy-revert-confirm { margin-top: 12px; padding: 12px 14px; border: 1px solid var(--hairline); border-radius: 8px; background: var(--white); }
+.policy-revert-confirm p { margin: 0 0 10px; }
+.policy-revert-confirm .settings-row { margin-bottom: 0; }
+.policy-refined input:focus-visible, .policy-refined select:focus-visible, .policy-refined textarea:focus-visible { outline: 2px solid var(--brand-yellow); outline-offset: 2px; }
+@media (max-width: 1000px) { .policy-refined .policy-columns { grid-template-columns: 1fr; } .policy-refined .policy-helper-card { grid-row: 1; } }
+@media (max-width: 600px) { .policy-refined .policy-columns, .policy-refined > .policy-card, .policy-refined .policy-tabs { margin-left: 14px; margin-right: 14px; } .policy-refined .policy-card { padding: 17px; } .policy-refined .policy-helper-textarea { font-size: 16px; } }
+
+
+/* Invert the neutral surfaces on Policies only. */
+.policy-refined { --stone: #FCFBFA; background: var(--white); min-height: 100%; }
+.policy-refined .policy-card { background: var(--stone); }
+.policy-refined .policy-bubble,
+.policy-refined .policy-json,
+.policy-refined .policy-label,
+.policy-refined .policy-request { background: var(--white); }
+.policy-refined .policy-case-select,
+.policy-refined .settings-input { background: var(--stone); }
+
+.policy-refined .policy-helper-textarea { background: var(--white); }
+
+/* Keep the Helper's proposal and progress inside its own column. */
+.policy-helper-steps { display:flex; gap:8px; list-style:none; padding:0; margin:20px 0; }
+.policy-helper-steps li { flex:1; min-width:0; }
+.policy-helper-steps button { width:100%; display:flex; flex-wrap:wrap; align-items:center; gap:7px; padding:10px; border:1px solid #e4e2df; border-radius:8px; background:white; color:inherit; font:inherit; font-size:13px; }
+.policy-helper-steps button[aria-current="step"] { border-color:#57534e; box-shadow:inset 0 -3px #57534e; font-weight:700; opacity:1; }
+.policy-helper-steps button span { font-weight:700; }
+.policy-review-tabs { display:flex; gap:8px; margin:18px 0; }
+.policy-review-tabs button { flex:1; border:1px solid #e4e2df; border-radius:8px; background:white; padding:12px; color:inherit; font:inherit; cursor:pointer; }
+.policy-review-tabs button[aria-selected="true"] { border-color:#57534e; font-weight:700; }
+.policy-review-tabs small { display:block; font-weight:400; margin-top:4px; }
+.policy-change-editor { width:100%; min-height:320px; height:55vh; max-height:650px; resize:vertical; background:white !important; font:13px/1.6 monospace; }
+.policy-change-list { padding-left:24px; max-height:65vh; overflow:auto; }
+.policy-change-list li { margin:16px 0; overflow-wrap:anywhere; }
+.policy-change-list p { margin:8px 0; line-height:1.6; }
+.policy-change-list p span { display:block; font-size:12px; font-weight:700; color:#666; }
+.policy-helper-error { white-space:pre-wrap; overflow-wrap:anywhere; color:#9f2727; padding:12px; background:#fff4f2; border-radius:8px; }
+.policy-helper-actions { flex-wrap:wrap; margin-top:20px; }
+.policy-secondary-action { background:white !important; color:#444 !important; border:1px solid #d8d5d1 !important; }
+.policy-change-count { font-size:13px; color:#666; }
+.policy-helper-card, .policy-manual-edit-details { scroll-margin-top:24px; }
+
+/* What the rep told the customer, on a resolved case (Resolution box) and in the History list. */
+.resolution-rep-message { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--ink); }
+.resolution-rep-message strong { font-weight: 600; }
+.queue-card-rep-message { font-style: italic; color: var(--muted); }
+

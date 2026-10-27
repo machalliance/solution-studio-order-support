@@ -1,0 +1,274 @@
+{
+  "hits": [
+    {
+      "objectID": "top-001",
+      "name": "Merino Crew Neck Sweater",
+      "brand": "Waybound",
+      "price": 85,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "midweight",
+        "merino wool",
+        "layering",
+        "breathable",
+        "durable",
+        "camping",
+        "road-trip"
+      ],
+      "colourHex": "#2d5016",
+      "colourFamily": "forest green",
+      "images": [
+        "/images/top-001.jpg"
+      ],
+      "url": "/products/merino-crew-neck-sweater",
+      "inStock": true,
+      "description": "The forest green Merino Crew Neck Sweater from Waybound offers midweight warmth and breathability, making it ideal for layering on camping trips and road adventures. Crafted from durable merino wool, this versatile sweater keeps you comfortable in changing temperatures while maintaining its shape trip after trip.",
+      "imagePrompt": "Flat-lay merino crew neck sweater in forest green wool, midweight knit with visible texture, camping adventure aesthetic, durable outdoor wear."
+    },
+    {
+      "objectID": "top-002",
+      "name": "Flannel Snap-Button Shirt",
+      "brand": "Waybound",
+      "price": 75,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "flannel",
+        "snap-button",
+        "layering",
+        "soft",
+        "durable",
+        "campfire",
+        "outdoor"
+      ],
+      "colourHex": "#8b4513",
+      "colourFamily": "rust",
+      "images": [
+        "/images/top-002.jpg"
+      ],
+      "url": "/products/flannel-snap-button-shirt",
+      "inStock": true,
+      "description": "The Waybound Flannel Snap-Button Shirt in rust is a soft, durable layering essential perfect for campfire nights and outdoor adventures. Featuring classic snap-button styling, this versatile flannel is built to last through seasons of wear.",
+      "imagePrompt": "Flat-lay flannel snap-button shirt in rust plaid, displayed on wooden surface with campfire logs and outdoor gear nearby"
+    },
+    {
+      "objectID": "top-003",
+      "name": "Waffle-Knit Henley",
+      "brand": "Waybound",
+      "price": 68,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "waffle-knit",
+        "henley",
+        "layering",
+        "thermal",
+        "soft",
+        "morning-wear",
+        "cool-weather"
+      ],
+      "colourHex": "#e8dcc8",
+      "colourFamily": "oatmeal",
+      "images": [
+        "/images/top-003.jpg"
+      ],
+      "url": "/products/waffle-knit-henley",
+      "inStock": true,
+      "description": "Oatmeal waffle-knit henley from Waybound with a soft, textured finish perfect for layering during cool weather. The thermal properties and cozy construction make it an ideal morning essential for everyday wear.",
+      "imagePrompt": "Flat-lay waffle-knit thermal henley in oatmeal, soft textured fabric, cozy morning-wear aesthetic, cool-weather comfort styling."
+    },
+    {
+      "objectID": "top-004",
+      "name": "Waybound Organic Cotton Tee",
+      "brand": "Waybound",
+      "price": 32,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "organic-cotton",
+        "travel",
+        "layering",
+        "breathable",
+        "durable"
+      ],
+      "colourHex": "#F5F5F0",
+      "colourFamily": "cream",
+      "images": [
+        "/images/top-004.jpg"
+      ],
+      "url": "/products/waybound-organic-cotton-tee",
+      "inStock": true,
+      "description": "Waybound Organic Cotton Tee in cream is a versatile layering essential crafted from breathable organic cotton that moves with you through any adventure. Durable and lightweight, this travel-ready tee keeps you comfortable whether you're exploring new destinations or building the perfect capsule wardrobe.",
+      "imagePrompt": "Minimalist silhouette organic cotton tee in cream, displaying breathable weave texture, travel-ready durability, lightweight fabric folds"
+    },
+    {
+      "objectID": "top-005",
+      "name": "Waybound Organic Cotton Tee",
+      "brand": "Waybound",
+      "price": 32,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "organic-cotton",
+        "travel",
+        "layering",
+        "breathable",
+        "durable"
+      ],
+      "colourHex": "#3A3A38",
+      "colourFamily": "charcoal",
+      "images": [
+        "/images/top-005.jpg"
+      ],
+      "url": "/products/waybound-organic-cotton-tee",
+      "inStock": true,
+      "description": "Charcoal organic cotton tee that's perfect for travel and everyday layering. Breathable, durable, and made from premium organic materials for all-day comfort.",
+      "imagePrompt": "Minimalist traveler wearing charcoal organic cotton tee, breathable lightweight fabric, durable textured weave, clean modern aesthetic"
+    },
+    {
+      "objectID": "top-006",
+      "name": "Waybound Organic Cotton Tee",
+      "brand": "Waybound",
+      "price": 32,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "organic-cotton",
+        "travel",
+        "layering",
+        "breathable",
+        "durable"
+      ],
+      "colourHex": "#6B7280",
+      "colourFamily": "sage-grey",
+      "images": [
+        "/images/top-006.jpg"
+      ],
+      "url": "/products/waybound-organic-cotton-tee",
+      "inStock": true,
+      "description": "This sage-grey tee is crafted from organic cotton, making it perfect for travel and layering in any climate. Its breathable and durable construction keeps you comfortable whether you're exploring a new city or relaxing at home.",
+      "imagePrompt": "Minimalist traveler wearing sage-grey organic cotton tee, breathable lightweight fabric, natural texture detail, adventure-ready aesthetic"
+    },
+    {
+      "objectID": "top-007",
+      "name": "Waybound Organic Cotton Tee",
+      "brand": "Waybound",
+      "price": 32,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "organic-cotton",
+        "travel",
+        "layering",
+        "breathable",
+        "durable"
+      ],
+      "colourHex": "#2C2C2C",
+      "colourFamily": "black",
+      "images": [
+        "/images/top-007.jpg"
+      ],
+      "url": "/products/waybound-organic-cotton-tee",
+      "inStock": true,
+      "description": "Black organic cotton tee designed for travelers who prioritize comfort and sustainability. Breathable, durable fabric makes it perfect for layering across any climate or adventure.",
+      "imagePrompt": "Black organic cotton t-shirt on traveler, breathable fabric draping naturally, durable stitching visible, minimalist travel aesthetic."
+    },
+    {
+      "objectID": "top-008",
+      "name": "Midweight Merino Crew",
+      "brand": "Waybound",
+      "price": 89,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "merino-wool",
+        "breathable",
+        "layering",
+        "temperature-regulating"
+      ],
+      "colourHex": "#e8dcc8",
+      "colourFamily": "oatmeal",
+      "images": [
+        "/images/top-008.jpg"
+      ],
+      "url": "/products/midweight-merino-crew",
+      "inStock": true,
+      "description": "This oatmeal merino wool crew neck offers natural temperature regulation and breathability, making it perfect for layering across seasons. The midweight construction provides comfortable insulation without bulk, ideal for active pursuits and everyday wear.",
+      "imagePrompt": "women's merino crew neck in oatmeal wool, laid flat on minimal background, showing breathable texture and temperature-regulating fabric detail"
+    },
+    {
+      "objectID": "top-009",
+      "name": "Flannel Snap-Button Shirt",
+      "brand": "Waybound",
+      "price": 79,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "flannel",
+        "snap-buttons",
+        "relaxed",
+        "versatile",
+        "layering"
+      ],
+      "colourHex": "#a0523d",
+      "colourFamily": "rust",
+      "images": [
+        "/images/top-009.jpg"
+      ],
+      "url": "/products/flannel-snap-button-shirt",
+      "inStock": true,
+      "description": "This rust flannel shirt features durable snap-button closures and a relaxed fit that's perfect for layering or wearing solo. The classic plaid pattern and soft flannel fabric make it an essential piece for casual style.",
+      "imagePrompt": "relaxed women's flannel snap-button shirt in rust, cozy plaid texture with prominent metal snap closures and oversized fit"
+    },
+    {
+      "objectID": "top-010",
+      "name": "Waffle-Knit Henley",
+      "brand": "Waybound",
+      "price": 58,
+      "currency": "USD",
+      "category": "top",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "waffle-knit",
+        "henley",
+        "lightweight",
+        "layering-base"
+      ],
+      "colourHex": "#2d3a52",
+      "colourFamily": "indigo",
+      "images": [
+        "/images/top-010.jpg"
+      ],
+      "url": "/products/waffle-knit-henley",
+      "inStock": true,
+      "description": "The indigo waffle-knit henley offers a textured, breathable base layer perfect for versatile styling. Its lightweight construction makes it ideal for layering through every season.",
+      "imagePrompt": "Fitted women's waffle-knit henley in deep indigo, textured fabric close-up, perfect layering base showing henley neckline detail."
+    }
+  ],
+  "nbHits": 10,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

@@ -1,0 +1,36 @@
+# Keep secrets, local state and generated output OUT of the image. The API keys reach the containers at run time
+# (docker-compose.yml's env_file), never baked in.
+.git
+.gitignore
+.env
+.env.*
+
+node_modules
+**/node_modules
+**/.next
+.fallow
+**/.fallow
+**/*.tsbuildinfo
+**/next-env.d.ts
+
+# Local databases and runtime state (a container starts with its own, in the agent-data volume)
+*.db
+*.db-shm
+*.db-wal
+**/mastra.db*
+apps/agent/data/disagreement-tickets.json
+
+# Not needed to run the apps
+temp-docs
+docs
+README.md
+.claude
+CLAUDE.md
+**/CLAUDE.md
+**/tests
+shared/tests
+**/*.log
+**/.scratch*
+Dockerfile
+docker-compose.yml
+.dockerignore

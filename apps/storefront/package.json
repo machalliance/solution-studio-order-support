@@ -1,0 +1,26 @@
+{
+  "name": "@wismo/storefront",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev -p ${STOREFRONT_PORT:-3007}",
+    "build": "next build",
+    "start": "next start -p ${STOREFRONT_PORT:-3007}",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@assistant-ui/react": "^0.15.17",
+    "@assistant-ui/react-ai-sdk": "^1.4.8",
+    "dotenv": "^17.4.2",
+    "next": "^16.4.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,54 @@
+The MIT license in LICENSE covers the source code in this repository.
+
+It does not extend to:
+
+- The "MACH Alliance" name and logo (apps/storefront/public/mach-logo.svg and
+  apps/escalation-desk/public/mach-logo.svg, and their use in the storefront footer and the
+  Escalation Desk header). These remain the property of MACH Alliance, Inc. and are not licensed
+  for reuse, redistribution, or sale under the MIT grant above.
+- Any third-party trademark. The MIT grant licenses this code; it grants no rights in anyone
+  else's marks. The sample catalog's only brand value is "Waybound", the fictional retailer
+  invented for this demo, and nothing in this repository should be read as a licence to attach a
+  real company's name to the demo data.
+- The product photos (apps/storefront/public/products) and the demo damage photos
+  (apps/agent/data/damage-photos). All of them are AI-generated and fictional, and an
+  AI-generated image can resemble a real product's design even with no brand name attached.
+  Don't present them as real product photography.
+- The third-party names used to say what the code works with: Anthropic and Claude, OpenAI and
+  gpt-image-1, and Algolia (the sample catalog files are named algolia-*.json for the export
+  format they follow). This is nominative use, not a claim of affiliation, endorsement, or
+  partnership with any of them.
+
+## Third-party attribution
+
+The Dockerfile's `npm ci` and `npm prune --omit=dev` copy this project's production dependencies
+into the runtime image, so redistributing a built image redistributes them too. Most are
+licensed MIT, ISC or BSD (or a similarly permissive license), and their license files stay in
+their own package folders. The following carry attribution requirements of their own,
+independent of this repository's own MIT license.
+
+Licensed Apache-2.0:
+
+@a2a-js/sdk-v0_3, @a2a-js/sdk-v1, @ai-sdk/gateway, @ai-sdk/mcp, @ai-sdk/openai,
+@ai-sdk/provider, @ai-sdk/provider-utils, @ai-sdk/provider-utils-v6, @ai-sdk/provider-utils-v7,
+@ai-sdk/provider-v5, @ai-sdk/provider-v6, @ai-sdk/provider-v7, @ai-sdk/react, @mastra/ai-sdk,
+@mastra/core, @mastra/libsql, @mastra/observability, @mastra/schema-compat, @swc/helpers,
+@vercel/oidc, @workflow/serde, ai, baseline-browser-mapping, detect-libc, human-signals, remend,
+sharp
+
+Each is (c) its respective copyright holders, licensed under the Apache License, Version 2.0
+(https://www.apache.org/licenses/LICENSE-2.0).
+
+Licensed CC-BY-4.0:
+
+caniuse-lite (browser-support data), (c) its respective copyright holders, used under the
+Creative Commons Attribution 4.0 International license
+(https://creativecommons.org/licenses/by/4.0/).
+
+`sharp` is installed by Next.js as an optional dependency (neither app's code uses
+`next/image`). Its prebuilt platform package (@img/sharp-libvips-linux-x64 or
+@img/sharp-libvips-linux-arm64 on the Debian-based runtime image) bundles libvips itself,
+licensed LGPL-3.0-or-later, together with further third-party libraries under their own licenses
+(cairo under MPL 1.1; glib, fribidi and libexif under LGPL-3.0; and others) - see that package's
+own README for the full breakdown. This repository links to it dynamically only; no modified
+copy of libvips or its dependencies is distributed.

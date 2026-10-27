@@ -1,0 +1,114 @@
+{
+  "hits": [
+    {
+      "objectID": "socks-001",
+      "name": "Trail Cotton Crew Socks",
+      "brand": "Waybound",
+      "price": 14.99,
+      "currency": "USD",
+      "category": "socks",
+      "style": "casual",
+      "fit": "mens",
+      "tags": [
+        "cotton",
+        "crew",
+        "hiking",
+        "everyday",
+        "breathable"
+      ],
+      "colourHex": "#8B7355",
+      "colourFamily": "brown",
+      "images": [
+        "/images/socks-001.jpg"
+      ],
+      "url": "/products/trail-cotton-crew-socks",
+      "inStock": true,
+      "description": "Waybound Trail Cotton Crew Socks in brown keep your feet comfortable and dry on the trail or around town with breathable cotton construction. Perfect for hiking and everyday wear, these men's crew socks deliver reliable support and cushioning at $14.99.",
+      "imagePrompt": "men's brown cotton crew socks displayed flat lay with hiking boot and outdoor trail background, breathable texture detail visible"
+    },
+    {
+      "objectID": "socks-002",
+      "name": "Merino Wool Hiking Socks",
+      "brand": "Waybound",
+      "price": 18.99,
+      "currency": "USD",
+      "category": "socks",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "merino wool",
+        "crew",
+        "hiking",
+        "temperature-regulating",
+        "durable"
+      ],
+      "colourHex": "#4A4A4A",
+      "colourFamily": "charcoal",
+      "images": [
+        "/images/socks-002.jpg"
+      ],
+      "url": "/products/merino-wool-hiking-socks",
+      "inStock": true,
+      "description": "Charcoal merino wool crew socks engineered for hiking with temperature-regulating properties to keep feet comfortable on any trail. Durable construction ensures lasting performance mile after mile.",
+      "imagePrompt": "women's crew hiking socks in charcoal merino wool, temperature-regulating design, durable construction, displayed on feet during outdoor trail activity"
+    },
+    {
+      "objectID": "socks-003",
+      "name": "Classic Cotton Anklets",
+      "brand": "Waybound",
+      "price": 13.99,
+      "currency": "USD",
+      "category": "socks",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "cotton",
+        "ankle",
+        "everyday",
+        "lightweight",
+        "versatile"
+      ],
+      "colourHex": "#FFFFFF",
+      "colourFamily": "white",
+      "images": [
+        "/images/socks-003.jpg"
+      ],
+      "url": "/products/classic-cotton-anklets",
+      "inStock": true,
+      "description": "White cotton anklets that offer everyday comfort with a lightweight, breathable design perfect for any casual outfit. Ideal for women seeking reliable, versatile socks that won't weigh you down.",
+      "imagePrompt": "three pairs women's classic cotton anklets in white, displayed flat lay on neutral background, everyday wear"
+    },
+    {
+      "objectID": "socks-004",
+      "name": "Adventure Merino Crew Socks",
+      "brand": "Waybound",
+      "price": 19.99,
+      "currency": "USD",
+      "category": "socks",
+      "style": "casual",
+      "fit": "mens",
+      "tags": [
+        "merino wool",
+        "crew",
+        "outdoor",
+        "moisture-wicking",
+        "cushioned"
+      ],
+      "colourHex": "#2C3E50",
+      "colourFamily": "navy",
+      "images": [
+        "/images/socks-004.jpg"
+      ],
+      "url": "/products/adventure-merino-crew-socks",
+      "inStock": true,
+      "description": "Adventure Merino Crew Socks in navy deliver premium comfort for outdoor pursuits with moisture-wicking merino wool and cushioned arch support. Perfect for hiking, camping, or everyday wear, these crew-height socks keep your feet dry and blister-free on any terrain.",
+      "imagePrompt": "Flat lay men's crew socks in navy merino wool, showing cushioned sole and outdoor-ready moisture-wicking texture detail."
+    }
+  ],
+  "nbHits": 4,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

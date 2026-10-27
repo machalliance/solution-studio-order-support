@@ -1,0 +1,63 @@
+{
+  "hits": [
+    {
+      "objectID": "scarf-001",
+      "name": "Wool Trail Neck Gaiter",
+      "brand": "Waybound",
+      "price": 48,
+      "currency": "USD",
+      "category": "scarf",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "wool",
+        "lightweight",
+        "packable",
+        "neck gaiter",
+        "mountain",
+        "cool weather"
+      ],
+      "colourHex": "#E8E4D0",
+      "colourFamily": "oatmeal",
+      "images": [
+        "/images/scarf-001.jpg"
+      ],
+      "url": "/products/wool-trail-neck-gaiter",
+      "inStock": true,
+      "description": "This oatmeal wool neck gaiter from Waybound is a lightweight, packable essential for cool-weather mountain adventures. Soft merino wool construction keeps you warm without bulk, making it easy to stash in your pack for layering on the trail.",
+      "imagePrompt": "Hiker wearing oatmeal wool neck gaiter in misty mountain setting, packable and draped casually around neck, cool weather gear."
+    },
+    {
+      "objectID": "scarf-002",
+      "name": "Lightweight Wool Trail Scarf",
+      "brand": "Waybound",
+      "price": 52,
+      "currency": "USD",
+      "category": "scarf",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "wool",
+        "lightweight",
+        "versatile",
+        "packable",
+        "layering"
+      ],
+      "colourHex": "#5a6b4f",
+      "colourFamily": "moss",
+      "images": [
+        "/images/scarf-002.jpg"
+      ],
+      "url": "/products/lightweight-wool-trail-scarf",
+      "inStock": true,
+      "description": "The Waybound Lightweight Wool Trail Scarf in moss is a versatile layering piece that packs down small for hiking and travel while keeping you warm in cool conditions. Made from breathable wool, this lightweight scarf works as a neck warmer, head covering, or emergency blanket on the trail.",
+      "imagePrompt": "Draped women's lightweight wool trail scarf in moss green, packable and compact, styled on outdoor adventurer against natural landscape."
+    }
+  ],
+  "nbHits": 2,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

@@ -1,0 +1,117 @@
+{
+  "hits": [
+    {
+      "objectID": "shoes-001",
+      "name": "Trail Runner Canvas Sneaker",
+      "brand": "Waybound",
+      "price": 75,
+      "currency": "USD",
+      "category": "shoes",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "canvas",
+        "trail",
+        "low-profile",
+        "breathable",
+        "lightweight",
+        "hiking",
+        "road-trip"
+      ],
+      "colourHex": "#e8dcc8",
+      "colourFamily": "bone",
+      "images": [
+        "/images/shoes-001.jpg"
+      ],
+      "url": "/products/trail-runner-canvas-sneaker",
+      "inStock": true,
+      "description": "Bone canvas construction defines this lightweight Waybound Trail Runner, engineered for breathable comfort on both rugged trails and casual road-trip adventures. The low-profile design delivers responsive support for hikers seeking versatile everyday wear.",
+      "imagePrompt": "Low-profile canvas sneaker in bone, breathable trail design with hiking-ready traction and minimalist road-trip aesthetic."
+    },
+    {
+      "objectID": "shoes-002",
+      "name": "Camp Slip-On Shoe",
+      "brand": "Waybound",
+      "price": 70,
+      "currency": "USD",
+      "category": "shoes",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "slip-on",
+        "camp",
+        "durable",
+        "comfort",
+        "easy-on",
+        "versatile",
+        "road-trip"
+      ],
+      "colourHex": "#6b8e5f",
+      "colourFamily": "moss",
+      "images": [
+        "/images/shoes-002.jpg"
+      ],
+      "url": "/products/camp-slip-on-shoe",
+      "inStock": true,
+      "description": "The moss Camp Slip-On Shoe features a durable, comfortable design perfect for road trips and everyday wear. Easy slip-on style keeps you moving without the hassle of laces.",
+      "imagePrompt": "Moss green canvas slip-on camp shoe with cushioned footbed, relaxed silhouette, reinforced sole, displayed from side angle on neutral background."
+    },
+    {
+      "objectID": "shoes-003",
+      "name": "Low-Profile Canvas Trail Sneaker",
+      "brand": "Waybound",
+      "price": 92,
+      "currency": "USD",
+      "category": "shoes",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "sneaker",
+        "canvas",
+        "trail-ready",
+        "durable",
+        "everyday"
+      ],
+      "colourHex": "#8b7355",
+      "colourFamily": "walnut",
+      "images": [
+        "/images/shoes-003.jpg"
+      ],
+      "url": "/products/low-profile-canvas-trail-sneaker",
+      "inStock": true,
+      "description": "The walnut Low-Profile Canvas Trail Sneaker from Waybound offers rugged durability and everyday comfort in a sleek, compact design. Built with sturdy canvas and trail-ready construction, it's your go-to shoe for adventures both on and off the path.",
+      "imagePrompt": "Low-profile women's trail sneaker in walnut canvas, durable everyday design, side view on white background, clean minimalist styling"
+    },
+    {
+      "objectID": "shoes-004",
+      "name": "Slip-On Camp Shoe",
+      "brand": "Waybound",
+      "price": 72,
+      "currency": "USD",
+      "category": "shoes",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "slip-on",
+        "camp-shoe",
+        "easy-to-wear",
+        "relaxed"
+      ],
+      "colourHex": "#d4a574",
+      "colourFamily": "saddle-tan",
+      "images": [
+        "/images/shoes-004.jpg"
+      ],
+      "url": "/products/slip-on-camp-shoe",
+      "inStock": true,
+      "description": "The Waybound Slip-On Camp Shoe in saddle-tan is the perfect easy-to-wear option for casual days and weekend adventures. Designed with a relaxed fit, this slip-on style keeps you comfortable whether you're lounging at camp or running errands around town.",
+      "imagePrompt": "Relaxed women's slip-on camp shoe in saddle-tan suede, featuring comfortable elastic goring and a casual, easy-to-wear aesthetic."
+    }
+  ],
+  "nbHits": 4,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

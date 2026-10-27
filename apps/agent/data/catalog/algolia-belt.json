@@ -1,0 +1,60 @@
+{
+  "hits": [
+    {
+      "objectID": "belt-001",
+      "name": "Full-Grain Leather Belt",
+      "brand": "Waybound",
+      "price": 45,
+      "currency": "USD",
+      "category": "belt",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "full-grain leather",
+        "brass buckle",
+        "solid",
+        "travel"
+      ],
+      "colourHex": "#6B5344",
+      "colourFamily": "walnut brown",
+      "images": [
+        "/images/belt-001.jpg"
+      ],
+      "url": "/products/full-grain-leather-belt",
+      "inStock": true,
+      "description": "The Waybound Full-Grain Leather Belt in walnut brown is a durable travel essential crafted from solid full-grain leather with an antique brass buckle. Built to last through years of adventures, this timeless accessory combines functionality with classic style.",
+      "imagePrompt": "Flat lay full-grain leather belt in walnut brown with brass buckle, coiled, travel-ready styling, artisanal craftsmanship"
+    },
+    {
+      "objectID": "belt-002",
+      "name": "Leather Belt with Brass Buckle",
+      "brand": "Waybound",
+      "price": 68,
+      "currency": "USD",
+      "category": "belt",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "full-grain-leather",
+        "brass-buckle",
+        "durable",
+        "versatile"
+      ],
+      "colourHex": "#d4a574",
+      "colourFamily": "saddle-tan",
+      "images": [
+        "/images/belt-002.jpg"
+      ],
+      "url": "/products/leather-belt-with-brass-buckle",
+      "inStock": true,
+      "description": "This saddle-tan leather belt features a timeless brass buckle and is crafted from durable full-grain leather. Perfect for adding a warm, classic touch to any wardrobe.",
+      "imagePrompt": "women's leather belt in saddle-tan full-grain leather with prominent brass buckle, durable construction, product photography on white background"
+    }
+  ],
+  "nbHits": 2,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

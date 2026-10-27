@@ -1,0 +1,88 @@
+{
+  "hits": [
+    {
+      "objectID": "accessories-001",
+      "name": "Full-Grain Leather Weekender Duffel",
+      "brand": "Waybound",
+      "price": 245,
+      "currency": "USD",
+      "category": "accessories",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "travel",
+        "weekender",
+        "duffel",
+        "full-grain leather",
+        "road-trip"
+      ],
+      "colourHex": "#D2B48C",
+      "colourFamily": "saddle tan",
+      "images": [
+        "/images/accessories-001.jpg"
+      ],
+      "url": "/products/full-grain-leather-weekender-duffel",
+      "inStock": true,
+      "description": "This saddle tan full-grain leather weekender duffel combines timeless style with rugged durability for your next adventure. Built to withstand road trips and getaways, it's the perfect travel companion that only gets better with age.",
+      "imagePrompt": "Saddle tan full-grain leather weekender duffel bag, structured cylindrical shape with brass hardware and weathered patina, packed for road trip adventure."
+    },
+    {
+      "objectID": "accessories-002",
+      "name": "Canvas Daypack",
+      "brand": "Waybound",
+      "price": 165,
+      "currency": "USD",
+      "category": "accessories",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "daypack",
+        "canvas",
+        "travel",
+        "road-trip",
+        "national parks"
+      ],
+      "colourHex": "#8B8B7A",
+      "colourFamily": "moss",
+      "images": [
+        "/images/accessories-002.jpg"
+      ],
+      "url": "/products/canvas-daypack",
+      "inStock": true,
+      "description": "The Waybound Canvas Daypack in moss is a durable, versatile pack designed for day trips to national parks and weekend road adventures. With its classic canvas construction and timeless color, it's the perfect companion for travelers who value both style and functionality.",
+      "imagePrompt": "Moss canvas daypack with weathered leather straps, displayed against a scenic national park landscape backdrop, perfect for road trips."
+    },
+    {
+      "objectID": "accessories-003",
+      "name": "Full-Grain Leather Weekender Duffel",
+      "brand": "Waybound",
+      "price": 185,
+      "currency": "USD",
+      "category": "accessories",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "leather",
+        "duffel-bag",
+        "weekender",
+        "travel",
+        "durable"
+      ],
+      "colourHex": "#6b5344",
+      "colourFamily": "walnut",
+      "images": [
+        "/images/accessories-003.jpg"
+      ],
+      "url": "/products/full-grain-leather-weekender-duffel",
+      "inStock": true,
+      "description": "This walnut full-grain leather weekender duffel from Waybound combines timeless style with rugged durability for your next getaway. Perfect for short trips, the spacious design and quality craftsmanship make it an investment piece that will last for years.",
+      "imagePrompt": "Women's walnut full-grain leather weekender duffel bag, structured cylindrical silhouette, prominent handles, travel-ready styling, rich brown tone."
+    }
+  ],
+  "nbHits": 3,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}

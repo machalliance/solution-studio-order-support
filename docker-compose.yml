@@ -1,0 +1,83 @@
+# Three services from ONE image (see Dockerfile). Quick start:
+#   cp .env.example .env       # then set ANTHROPIC_API_KEY (and optionally OPENAI_API_KEY)
+#   docker compose up --build
+# Storefront http://localhost:3007 · Escalation Desk http://localhost:3005 · Agent API http://localhost:3006
+# (ports follow STOREFRONT_PORT / DESK_PORT / AGENT_PORT in .env).
+name: wismo
+
+services:
+  agent:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_AGENT_PORT: ${AGENT_PORT:-3006}
+        NEXT_PUBLIC_AGENT_URL: ${NEXT_PUBLIC_AGENT_URL:-}
+    image: wismo
+    command: ["npm", "run", "start", "--workspace=apps/agent"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      AGENT_PORT: ${AGENT_PORT:-3006}
+      # Inside the agent-data volume, so the database, policy versions and tickets survive a container being recreated.
+      AGENT_DB_URL: file:./data/mastra.db
+    ports:
+      - "${AGENT_PORT:-3006}:${AGENT_PORT:-3006}"
+    volumes:
+      - agent-data:/app/apps/agent/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:'+(process.env.AGENT_PORT||3006)+'/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    restart: unless-stopped
+
+  desk:
+    image: wismo
+    pull_policy: never
+    command: ["npm", "run", "start", "--workspace=apps/escalation-desk"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DESK_PORT: ${DESK_PORT:-3005}
+    ports:
+      - "${DESK_PORT:-3005}:${DESK_PORT:-3005}"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:'+(process.env.DESK_PORT||3005)).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    depends_on:
+      agent:
+        condition: service_healthy
+    restart: unless-stopped
+
+  storefront:
+    image: wismo
+    pull_policy: never
+    command: ["npm", "run", "start", "--workspace=apps/storefront"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      STOREFRONT_PORT: ${STOREFRONT_PORT:-3007}
+    ports:
+      - "${STOREFRONT_PORT:-3007}:${STOREFRONT_PORT:-3007}"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:'+(process.env.STOREFRONT_PORT||3007)).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    depends_on:
+      agent:
+        condition: service_healthy
+    restart: unless-stopped
+
+# The agent's writable state: its database (mastra.db), the policy versions, the support-ticket record. The volume is filled from
+# the image the first time it is created. `docker compose down -v` deletes it — a clean slate.
+volumes:
+  agent-data:

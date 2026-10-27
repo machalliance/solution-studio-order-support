@@ -1,0 +1,17 @@
+{
+  "name": "wismo",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/run-all.mjs dev",
+    "start": "node scripts/run-all.mjs start",
+    "agent:dev": "npm run dev --workspace=apps/agent",
+    "agent:seed": "npm run seed --workspace=apps/agent",
+    "desk:dev": "npm run dev --workspace=apps/escalation-desk",
+    "test": "npm run test --workspaces --if-present && tsx --test \"shared/tests/*.test.ts\""
+  }
+}

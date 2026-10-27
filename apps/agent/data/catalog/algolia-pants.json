@@ -1,0 +1,114 @@
+{
+  "hits": [
+    {
+      "objectID": "pants-001",
+      "name": "Canvas Work Pants",
+      "brand": "Waybound",
+      "price": 115,
+      "currency": "USD",
+      "category": "pants",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "durable",
+        "twill",
+        "relaxed-fit",
+        "road-trip",
+        "work-wear"
+      ],
+      "colourHex": "#1f3a5f",
+      "colourFamily": "indigo",
+      "images": [
+        "/images/pants-001.jpg"
+      ],
+      "url": "/products/canvas-work-pants",
+      "inStock": true,
+      "description": "Indigo canvas work pants built from heavyweight twill that's ready for any job site or adventure. Relaxed-fit design moves with you while the durable construction holds up through years of wear.",
+      "imagePrompt": "Relaxed-fit canvas work pants in indigo twill, durable construction, rugged road-trip aesthetic, authentic workwear style."
+    },
+    {
+      "objectID": "pants-002",
+      "name": "Lightweight Cargo Trail Pants",
+      "brand": "Waybound",
+      "price": 125,
+      "currency": "USD",
+      "category": "pants",
+      "style": "casual",
+      "fit": "unisex",
+      "tags": [
+        "ripstop",
+        "cargo",
+        "lightweight",
+        "trail",
+        "relaxed-fit"
+      ],
+      "colourHex": "#6b5344",
+      "colourFamily": "walnut",
+      "images": [
+        "/images/pants-002.jpg"
+      ],
+      "url": "/products/lightweight-cargo-trail-pants",
+      "inStock": true,
+      "description": "Lightweight Cargo Trail Pants in walnut feature durable ripstop fabric and multiple cargo pockets designed for trail adventures and outdoor exploration. The relaxed-fit silhouette offers comfortable movement whether you're hiking, camping, or tackling everyday tasks.",
+      "imagePrompt": "Relaxed-fit cargo trail pants in walnut ripstop, with multiple pockets and reinforced seams, displayed on outdoor mountain backdrop."
+    },
+    {
+      "objectID": "pants-003",
+      "name": "Canvas Work Pants",
+      "brand": "Waybound",
+      "price": 98,
+      "currency": "USD",
+      "category": "pants",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "canvas",
+        "durable",
+        "relaxed-fit",
+        "workwear",
+        "weekend"
+      ],
+      "colourHex": "#5a6b4f",
+      "colourFamily": "moss",
+      "images": [
+        "/images/pants-003.jpg"
+      ],
+      "url": "/products/canvas-work-pants",
+      "inStock": true,
+      "description": "Moss Canvas Work Pants by Waybound combine a relaxed, comfortable fit with durable heavyweight canvas that transitions seamlessly from job site to weekend plans. Built for hardworking women, these pants offer practical functionality without sacrificing style.",
+      "imagePrompt": "relaxed-fit women's canvas work pants in moss, durable heavyweight fabric, utility pockets, comfortable workwear silhouette"
+    },
+    {
+      "objectID": "pants-004",
+      "name": "Lightweight Cargo Trail Pants",
+      "brand": "Waybound",
+      "price": 105,
+      "currency": "USD",
+      "category": "pants",
+      "style": "casual",
+      "fit": "womens",
+      "tags": [
+        "cargo",
+        "lightweight",
+        "hiking",
+        "multi-pocket",
+        "outdoor"
+      ],
+      "colourHex": "#6b7280",
+      "colourFamily": "charcoal",
+      "images": [
+        "/images/pants-004.jpg"
+      ],
+      "url": "/products/lightweight-cargo-trail-pants",
+      "inStock": true,
+      "description": "Charcoal lightweight cargo trail pants designed for women hikers and outdoor enthusiasts who need practical, multi-pocket storage without extra weight. Perfect for day hikes and backcountry adventures with a durable yet breathable fabric.",
+      "imagePrompt": "Fitted women's cargo trail pants in charcoal technical fabric, multiple deep pockets, outdoor hiking design, lightweight ripstop material."
+    }
+  ],
+  "nbHits": 4,
+  "page": 0,
+  "nbPages": 1,
+  "hitsPerPage": 20,
+  "processingTimeMS": 1,
+  "query": ""
+}
