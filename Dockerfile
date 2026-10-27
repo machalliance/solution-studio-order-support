@@ -1,6 +1,6 @@
 # One image for all three apps (agent, escalation desk, storefront). docker-compose.yml starts three containers from it,
 # each with its own command. Self-contained: dependencies installed and both Next apps built at image-build time, no bind mounts.
-FROM node:22-bookworm-slim
+FROM node:26-bookworm-slim
 
 # Security: apply the Debian security updates released since the base image was built, and refresh npm (the base image ships an npm
 # whose bundled packages scanners flag). Done as root, before dropping privileges.
