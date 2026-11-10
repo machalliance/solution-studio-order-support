@@ -12,20 +12,20 @@
     "start": "tsx --env-file-if-exists=../../.env src/index.ts"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^4.0.46",
-    "@hono/node-server": "^2.1.1",
+    "@ai-sdk/openai": "^4.0.110",
+    "@hono/node-server": "^2.1.6",
     "@libsql/client": "^0.18.0",
-    "@mastra/ai-sdk": "^1.10.0",
-    "@mastra/core": "^1.63.2",
-    "@mastra/libsql": "^1.22.2",
-    "@mastra/observability": "^1.17.4",
-    "ai": "^7.0.89",
-    "hono": "^4.13.5",
+    "@mastra/ai-sdk": "^1.11.3",
+    "@mastra/core": "^1.82.0",
+    "@mastra/libsql": "^1.29.0",
+    "@mastra/observability": "^1.23.1",
+    "ai": "^7.0.164",
+    "hono": "^4.13.16",
     "tsx": "^4.23.13",
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@types/node": "^26.4.1",
+    "@types/node": "^26.6.6",
     "typescript": "^7.0.2"
   }
 }
